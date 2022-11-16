@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Quiz Info</h1>
+    <p>Title: {{ quiz.title }}</p>
+    <p>Topic: {{ quiz.topic }}</p>
+    <p>Date Created: {{ quiz.created|date }}</p>
+    <p>Difficulty: {{ quiz.difficulty }}</p>
+    <p>No of Questions: {{ quiz.no_of_questions }}</p>
+    <p>Passing: {{ quiz.passing }}</p>
+    <a href="{% url 'home-view' %}">Back</a>
+    <a href="{% url 'quiz-test-view' quiz.id %}">Start</a>
+{% endblock content %}

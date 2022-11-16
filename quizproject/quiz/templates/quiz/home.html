@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for q in quizzes %}
+        <h1><a href="{% url 'quiz-info-view' q.id %}">{{ q.title }}</a></h1>
+    {% endfor %}
+{% endblock content %}
