@@ -7,3 +7,8 @@ def result(request, pk):
     obj = Result.objects.get(id=pk)
     context = {'result': obj}
     return render(request, 'result/result.html', context)
+
+
+def user_login(request):
+    context = {}
+    return render(request, 'result/login.html', context)
