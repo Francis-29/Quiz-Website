@@ -10,4 +10,4 @@ class Result(models.Model):
     score = models.FloatField()
 
     def __str__(self):
-        return f"{self.user.username} - {self.quiz.id}: {self.quiz.title}"
+        return f"{self.id}: {self.user.username} - {self.quiz.title}"
