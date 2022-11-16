@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Quiz
-
+from result.models import Result
 
 # Create your views here.
 def home(request):
@@ -18,6 +18,7 @@ def quiz_info(request, pk):
 def quiz_test(request, pk):
     quiz = Quiz.objects.get(id=pk)
     questions = quiz.get_questions()
+    user = request.user
     if request.method == 'POST':
         data = request.POST
         data_ = data.dict()
@@ -27,6 +28,7 @@ def quiz_test(request, pk):
         for val in data_.values():
             if val == 'True':
                 score += 1
+        Result.objects.create(quiz=quiz, user=user, score=score)
         return redirect('home-view')
     context = {'quiz': quiz, 'questions': questions}
     return render(request, 'quiz/quiz-test.html', context)
